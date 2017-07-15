@@ -167,7 +167,12 @@
 #define _LMDB_H_
 
 #include <sys/types.h>
+#if defined(__APPLE__)
+// When building dynamic frameworks with Swift compatibility, module maps
+// do not allow us to include the system's inttypes.h.
+#else
 #include <inttypes.h>
+#endif
 #include <limits.h>
 
 #ifdef __cplusplus
