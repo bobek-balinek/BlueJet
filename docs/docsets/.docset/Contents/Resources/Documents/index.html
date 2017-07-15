@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/bobek-balinek/BlueJet"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Database.html">Database</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Database/Flags.html">– Flags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Database/PutFlags.html">– PutFlags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Environment/Flags.html">– Flags</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Environment/Configuration.html">– Configuration</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/DBError.html">DBError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Slice.html">Slice</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Transaction.html">Transaction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Transaction/Flags.html">– Flags</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='bluejet' class='heading'>BlueJet</h1>
+
+<blockquote>
+<p>Blue jet is a rare type of a lightning with a very blue colour with near-ultraviolet emission lines from neutral and ionized molecular nitrogen. It typically occurs in the lower levels of ionosphere at ~50km above the surface of the earth.</p>
+</blockquote>
+<h2 id='synopsis' class='heading'>Synopsis</h2>
+
+<p>BlueJet is a modern Swift/Cocoa wrapper around Lightning Memory-Mapped Database Manager (LMDB). It fully utilises the multi-threaded access, transations and provides a simple enumeration interface for fetching subsets of the database. Key/Value pairs are using Swift&rsquo;s Encoder/Decoder protocol when dealing with the data.</p>
+<h2 id='what-is-lmdb' class='heading'>What is LMDB?</h2>
+
+<p>LMDB is an incredibly fast key-value store written by Howard Chu for the OpenLDAP project. Given the nature of LDAP workloads the design of LMDB is read-optimised (but writes are super fast too!). This particular database allows for multiple databases within one environment which makes separating different data sets much easier to handle. It also allows for multiple processes to access a single database without locking it and supports transactions for making series of fail-safe reads/write routines. For more details on the design and implementation of LMDB go to [HERE].</p>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>Add BlueJet to your Cartfile:</p>
+<pre class="highlight plaintext"><code>github "bobek-balinek/BlueJet"
+</code></pre>
+
+<p>Then run:</p>
+<pre class="highlight plaintext"><code>carthage update --use-submodules
+</code></pre>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p><strong>TODO</strong></p>
+<h2 id='basic-usage' class='heading'>Basic Usage</h2>
+
+<p><strong>TODO</strong></p>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p><strong>TODO</strong></p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> for more details!</p>
+
+<p>This project adheres to the <a href="https://github.com/bobek-balinek/BlueJet/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p><code>BlueJet</code> is available under the MIT license. See the LICENSE files for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/bobek-balinek" target="_blank" rel="external">Przemyslaw Bobak</a>. All rights reserved. (Last updated: 2017-07-15)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
