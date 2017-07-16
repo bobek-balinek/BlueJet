@@ -57,11 +57,35 @@ class KeySequenceTests: XCTestCase {
         XCTAssertEqual(keys, ["B", "C", "D"])
     }
 
+    func testReverseStartKey() {
+        let sequence = database.keyIterator(start: "B", reversed: true)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 2)
+        XCTAssertEqual(keys, ["B", "A"])
+    }
+
     func testEndKey() {
         let sequence = database.keyIterator(start: "A", end: "C")
         let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
 
         XCTAssertEqual(keys.count, 3)
         XCTAssertEqual(keys, ["A", "B", "C"])
+    }
+
+    func testRangeWithReverseOrder() {
+        let sequence = database.keyIterator(start: "C", end: "B", reversed: true)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 2)
+        XCTAssertEqual(keys, ["C", "B"])
+    }
+
+    func testEndRangeReverseOrder() {
+        let sequence = database.keyIterator(end: "B", reversed: true)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertEqual(keys, ["D", "C", "B"])
     }
 }

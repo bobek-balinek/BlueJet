@@ -96,14 +96,6 @@ public struct Transaction {
         mdb_txn_renew(pointer)
     }
 
-    public func compare(_ key: Slice, with otherKey: Slice, in database: Database) -> ComparisonResult? {
-        var keyValue = key.mdbValue()
-        var otherKeyValue = key.mdbValue()
-        let value = Int(mdb_cmp(pointer, database.pointer, &keyValue, &otherKeyValue))
-
-        return ComparisonResult(rawValue: value)
-    }
-
     public func cursor(query: Query) -> Cursor {
         return Cursor(transaction: self, query: query)
     }

@@ -46,6 +46,9 @@ public struct KeyIterator: IteratorProtocol {
             if let endKey = cursor.query.endKey {
                 if let dataKey = data?.key {
 
+                    // Cater for reverse ordering
+                    let upperBound: ComparisonResult = cursor.query.reversed ? .orderedDescending : .orderedAscending
+
                     // Compare the returned key with the range end key
                     let result = cursor.compare(endKey, with: dataKey)
 
@@ -54,7 +57,7 @@ public struct KeyIterator: IteratorProtocol {
                         return dataKey
 
                     // If the next key is above the endKey range
-                    } else if result == .orderedAscending {
+                    } else if result == upperBound {
                         return nil
                     }
                 }
