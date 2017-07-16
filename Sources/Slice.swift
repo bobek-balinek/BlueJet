@@ -29,6 +29,12 @@ public protocol Slice {
     func data() -> Data
 }
 
+extension Slice {
+    public func mdbValue() -> MDB_val {
+        return slice({ rawPointerToMdb($0) })
+    }
+}
+
 // MARK: - Data extension
 
 extension Data: Slice {
@@ -59,7 +65,6 @@ extension Data: Slice {
         self = Data.init(bytes: data.baseAddress!, count: data.count)
     }
 }
-
 
 // MARK: - String extension
 

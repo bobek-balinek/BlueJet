@@ -11,7 +11,6 @@ import Foundation
 import CLMDB
 #endif
 
-
 /// Convert bytes at given memory pointer to `MDB_val` structure
 ///
 /// - Parameter buf: Pointer to the data
@@ -78,7 +77,7 @@ public class Database {
 
         /// Just reserve space for data, don't copy it. Return a pointer to the reserved space.
         public static let reserve = PutFlags(rawValue: MDB_RESERVE)
-        
+
         /// Data is being appended, don't split full pages
         public static let append = PutFlags(rawValue: MDB_APPEND)
 
@@ -301,7 +300,21 @@ public class Database {
         }
     }
 
-    // MARK: Class methods
+    // MARK: - Iterators
+
+    /// Create a new key iterator for given params
+    ///
+    /// - Parameters:
+    ///   - start: Key to start the iteration with
+    ///   - end: Key to end the iteration at
+    ///   - reversed: Reverse order
+    /// - Returns: Instance of the KeySequence
+    func keyIterator(start: String? = nil, end: String? = nil, reversed: Bool = false) -> KeySequence {
+        let query = Query(startKey: start, endKey: end, reversed: reversed, database: self)
+        return KeySequence(query: query)
+    }
+
+    // MARK: - Class methods
 
     /// Create a database within given environment
     ///

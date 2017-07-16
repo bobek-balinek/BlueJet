@@ -59,11 +59,26 @@ public struct Transaction {
 
         do {
             try closure(self)
-            try validate(mdb_txn_commit(pointer))
+            try commit()
         } catch let error {
-            mdb_txn_abort(pointer)
+            abort()
             throw error
         }
+    }
+
+    /// Commit operations in this transaction
+    ///
+    /// - throws: Operation error. See `DBError`.
+    public mutating func commit() throws {
+        guard pointer != nil else {
+            throw DBError.badTransaction
+        }
+
+        defer {
+            pointer = nil
+        }
+
+        return try validate(mdb_txn_commit(pointer))
     }
 
     /// Reset read-only transaction
@@ -79,6 +94,18 @@ public struct Transaction {
     /// Renew a read-only transaction
     public func renew() {
         mdb_txn_renew(pointer)
+    }
+
+    public func compare(_ key: Slice, with otherKey: Slice, in database: Database) -> ComparisonResult? {
+        var keyValue = key.mdbValue()
+        var otherKeyValue = key.mdbValue()
+        let value = Int(mdb_cmp(pointer, database.pointer, &keyValue, &otherKeyValue))
+
+        return ComparisonResult(rawValue: value)
+    }
+
+    public func cursor(query: Query) -> Cursor {
+        return Cursor(transaction: self, query: query)
     }
 
     /// Check if given status code is valid
