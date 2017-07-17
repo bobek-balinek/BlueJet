@@ -12,7 +12,7 @@ import XCTest
 
 class EnvironmentTests: XCTestCase {
 
-    override class func tearDown() {
+    override func tearDown() {
         super.tearDown()
 
         try? FileManager.default.removeItem(atPath: Helpers.getPath())

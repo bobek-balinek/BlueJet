@@ -308,10 +308,22 @@ public class Database {
     ///   - start: Key to start the iteration with
     ///   - end: Key to end the iteration at
     ///   - reversed: Reverse order
-    /// - Returns: Instance of the KeySequence
+    /// - Returns: Instance of the `KeySequence`
     func keyIterator(start: String? = nil, end: String? = nil, reversed: Bool = false) -> KeySequence {
         let query = Query(startKey: start, endKey: end, reversed: reversed, database: self)
         return KeySequence(query: query)
+    }
+
+    /// Create a new key+value iterator for given params
+    ///
+    /// - Parameters:
+    ///   - start: Key to start the iteration with
+    ///   - end: Key to end the iteration at
+    ///   - reversed: Reverse order
+    /// - Returns: Instance of the `KeyValueSequence`
+    func keyValueIterator(start: String? = nil, end: String? = nil, reversed: Bool = false) -> KeyValueSequence {
+        let query = Query(startKey: start, endKey: end, reversed: reversed, database: self)
+        return KeyValueSequence(query: query)
     }
 
     // MARK: - Class methods

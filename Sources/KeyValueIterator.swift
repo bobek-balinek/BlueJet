@@ -1,22 +1,22 @@
 //
-//  KeyIterator.swift
+//  KeyValueIterator.swift
 //  BlueJet
 //
-//  Created by Przemyslaw Bobak on 16/07/2017.
+//  Created by Przemyslaw Bobak on 17/07/2017.
 //
 //
 
 import Foundation
 
-/// Key-only Iterator
-public struct KeyIterator: IteratorProtocol {
+/// Key & Value Iterator
+public struct KeyValueIterator: IteratorProtocol {
 
     var isEmpty: Bool
     var cursor: Cursor!
     var operation: CursorOperation!
     var nextOperation: CursorOperation!
 
-    public typealias Element = Data
+    public typealias Element = (key: Data, value: Data?)
 
     public init(cursor: Cursor, operation: CursorOperation, nextOperation: CursorOperation) {
         self.isEmpty = false
@@ -52,7 +52,7 @@ public struct KeyIterator: IteratorProtocol {
 
                     // If its the same as the end key, include it
                     if result == .orderedSame {
-                        return dataKey
+                        return data
 
                     // If the next key is above the endKey range
                     } else if result == upperBound {
@@ -64,7 +64,7 @@ public struct KeyIterator: IteratorProtocol {
             // Set current operation to the next operation
             self.operation = nextOperation
 
-            return data?.key ?? nil
+            return data
         } catch {
             return nil
         }

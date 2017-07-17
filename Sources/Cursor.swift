@@ -15,7 +15,7 @@ import CLMDB
 public class Cursor {
 
     /// Type alias for a Key/Value tuple
-    public typealias KeyValuePair = (key: Data?, value: Data?)
+    public typealias KeyValuePair = (key: Data, value: Data?)
 
     /// Query used to position cursor at
     public let query: Query
@@ -82,14 +82,18 @@ public class Cursor {
         let op: MDB_cursor_op = MDB_cursor_op(rawValue: operation.rawValue)
 
         do {
-            try validateGet(mdb_cursor_get(self.pointer, &keyValue, &value, op))
+            try validateGet(mdb_cursor_get(pointer, &keyValue, &value, op))
 
             if value.mv_size == 0 {
                 return nil
             }
 
+            guard let key = Data(data: mdbToRawPointer(keyValue)) else {
+                return nil
+            }
+
             return (
-                Data(data: mdbToRawPointer(keyValue)),
+                key,
                 Data(data: mdbToRawPointer(value))
             )
         } catch let error {

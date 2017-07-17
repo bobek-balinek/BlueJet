@@ -61,8 +61,13 @@ extension Data: Slice {
     ///
     /// - Parameter data: Instance of the in-memory poointer
     public init?(data: UnsafeRawBufferPointer) {
+        // If memory has been wrongly allocated, just return nil
+        guard data.baseAddress != nil else {
+            return nil
+        }
+
         // This copies the bytes out immediately.
-        self = Data.init(bytes: data.baseAddress!, count: data.count)
+        self = Data(bytes: data.baseAddress!, count: data.count)
     }
 }
 

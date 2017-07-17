@@ -15,21 +15,30 @@ class KeySequenceTests: XCTestCase {
 
     var environment: Environment!
     var database: Database!
+    var dbName: String!
 
     override func setUp() {
         super.setUp()
 
-        environment = try! Environment(path: Helpers.getPath())
-        database = try! Database.create(name: "Keys", environment: environment)
-        try! database.put("A", "0".data())
-        try! database.put("B", "1".data())
-        try! database.put("C", "2".data())
-        try! database.put("D", "3".data())
+        dbName = Helpers.getDBName(self, name)
+
+        do {
+            environment = try Environment(path: Helpers.getPath())
+            database = try Database.create(name: dbName, environment: environment)
+            try database.put("A", "0".data())
+            try database.put("B", "1".data())
+            try database.put("C", "2".data())
+            try database.put("D", "3".data())
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
 
     override func tearDown() {
         super.tearDown()
 
+        database.close()
+        environment.close()
         try? FileManager.default.removeItem(atPath: Helpers.getPath())
     }
 
@@ -49,6 +58,8 @@ class KeySequenceTests: XCTestCase {
         XCTAssertEqual(keys, ["D", "C", "B", "A"])
     }
 
+    // MARK: - Start Key
+
     func testStartKey() {
         let sequence = database.keyIterator(start: "B")
         let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
@@ -65,6 +76,8 @@ class KeySequenceTests: XCTestCase {
         XCTAssertEqual(keys, ["B", "A"])
     }
 
+    // MARK: - End Key
+
     func testEndKey() {
         let sequence = database.keyIterator(start: "A", end: "C")
         let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
@@ -72,6 +85,8 @@ class KeySequenceTests: XCTestCase {
         XCTAssertEqual(keys.count, 3)
         XCTAssertEqual(keys, ["A", "B", "C"])
     }
+
+    // MARK: - Full Range
 
     func testRangeWithReverseOrder() {
         let sequence = database.keyIterator(start: "C", end: "B", reversed: true)

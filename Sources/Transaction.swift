@@ -96,7 +96,7 @@ public struct Transaction {
         mdb_txn_renew(pointer)
     }
 
-    public func cursor(query: Query) -> Cursor {
+    public func cursor(for query: Query) -> Cursor {
         return Cursor(transaction: self, query: query)
     }
 

@@ -1,21 +1,21 @@
 //
-//  KeySequence.swift
+//  KeyValueSequence.swift
 //  BlueJet
 //
-//  Created by Przemyslaw Bobak on 15/07/2017.
+//  Created by Przemyslaw Bobak on 17/07/2017.
 //
 //
 
 import Foundation
 #if SWIFT_PACKAGE
-import CLMDB
+    import CLMDB
 #endif
 
 /// Key Sequence type
-public struct KeySequence: Sequence {
+public struct KeyValueSequence: Sequence {
 
     /// Defines the type of the iterator
-    public typealias Iterator = KeyIterator
+    public typealias Iterator = KeyValueIterator
 
     /// Query to run the iterator with
     private let query: Query
