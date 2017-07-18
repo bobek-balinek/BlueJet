@@ -43,7 +43,7 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testEnumeration() {
         let sequence = database.keyValueIterator()
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "A", value: "0"),
             (key: "B", value: "1"),
@@ -56,12 +56,12 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testReverseEnumeration() {
         let sequence = database.keyValueIterator(reversed: true)
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "D", value: "3"),
             (key: "C", value: "2"),
             (key: "B", value: "1"),
-            (key: "A", value: "0"),
+            (key: "A", value: "0")
         ]
 
         XCTAssertEqual(keys.count, 4)
@@ -72,11 +72,11 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testStartKey() {
         let sequence = database.keyValueIterator(start: "B")
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "B", value: "1"),
             (key: "C", value: "2"),
-            (key: "D", value: "3"),
+            (key: "D", value: "3")
         ]
 
         XCTAssertEqual(keys.count, 3)
@@ -85,10 +85,10 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testReverseStartKey() {
         let sequence = database.keyValueIterator(start: "B", reversed: true)
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "B", value: "1"),
-            (key: "A", value: "0"),
+            (key: "A", value: "0")
         ]
 
         XCTAssertEqual(keys.count, 2)
@@ -99,11 +99,11 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testEndKey() {
         let sequence = database.keyValueIterator(start: "A", end: "C")
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "A", value: "0"),
             (key: "B", value: "1"),
-            (key: "C", value: "2"),
+            (key: "C", value: "2")
         ]
 
         XCTAssertEqual(keys.count, 3)
@@ -114,10 +114,10 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testRangeWithReverseOrder() {
         let sequence = database.keyValueIterator(start: "C", end: "B", reversed: true)
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "C", value: "2"),
-            (key: "B", value: "1"),
+            (key: "B", value: "1")
         ]
 
         XCTAssertEqual(keys.count, 2)
@@ -126,11 +126,11 @@ class KeyValueSequenceTests: XCTestCase {
 
     func testEndRangeReverseOrder() {
         let sequence = database.keyValueIterator(end: "B", reversed: true)
-        let keys: [Entry] = sequence.map { (String(data: $0, encoding: .utf8)!, String(data: $1 ?? Data(), encoding: .utf8)) }
+        let keys: [Entry] = sequence.map { mapDataToString($0) }
         let expected: [Entry] = [
             (key: "D", value: "3"),
             (key: "C", value: "2"),
-            (key: "B", value: "1"),
+            (key: "B", value: "1")
         ]
 
         XCTAssertEqual(keys.count, 3)

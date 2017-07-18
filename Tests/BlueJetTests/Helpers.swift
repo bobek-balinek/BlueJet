@@ -19,6 +19,13 @@ func escapeName(_ text: String?) -> String? {
         .replacingOccurrences(of: " ", with: "")
 }
 
+func mapDataToString(_ pair: (key: Data, value: Data?)) -> Entry {
+    return (
+        key: String(data: pair.key, encoding: .utf8)!,
+        value: pair.value != nil ? String(data: pair.value!, encoding: .utf8) : nil
+    )
+}
+
 struct Helpers {
 
     static func getDBName(_ instance: XCTestCase, _ name: String?) -> String {
@@ -32,8 +39,6 @@ struct Helpers {
 
         do {
             try FileManager.default.createDirectory(at: envURL, withIntermediateDirectories: true, attributes: nil)
-
-            print("Created db at path: \(envURL.path)")
         } catch {
             XCTFail("Could not create DB dir: \(error)")
         }
@@ -46,19 +51,18 @@ func == (lhs: Entry, rhs: Entry) -> Bool {
     return lhs.key == rhs.key && lhs.value == rhs.value
 }
 
-func assertEqual(_ a: [Entry], _ b: [Entry]) -> Bool {
-    guard a.count == b.count else {
+func assertEqual(_ entry: [Entry], _ anotherEntry: [Entry]) -> Bool {
+    guard entry.count == anotherEntry.count else {
         return false
     }
 
     var valid: Bool = true
 
-    a.enumerated().forEach { (offset: Int, element: Entry) in
+    entry.enumerated().forEach { (offset: Int, _: Entry) in
         if valid {
-            valid = a[offset] == b[offset]
+            valid = entry[offset] == anotherEntry[offset]
         }
     }
 
     return valid
 }
-
