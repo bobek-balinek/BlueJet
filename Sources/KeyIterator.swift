@@ -21,7 +21,14 @@ public struct KeyIterator: IteratorProtocol {
     public init(cursor: Cursor, operation: CursorOperation, nextOperation: CursorOperation) {
         self.isEmpty = false
         self.cursor = cursor
-        self.operation = operation
+
+        // Handle GT query range and at init time simply skip the first key
+        var startOperation = operation
+        if cursor.query.start != nil && !cursor.query.isGte {
+            startOperation = cursor.nextOperation
+        }
+
+        self.operation = startOperation
         self.nextOperation = nextOperation
     }
 
@@ -39,9 +46,9 @@ public struct KeyIterator: IteratorProtocol {
         }
 
         do {
-            let data = try cursor.get(cursor.query.startKey, operation)
+            let data = try cursor.get(cursor.query.start, operation)
 
-            if let endKey = cursor.query.endKey {
+            if let endKey = cursor.query.end {
                 if let dataKey = data?.key {
 
                     // Cater for reverse ordering
@@ -51,11 +58,12 @@ public struct KeyIterator: IteratorProtocol {
                     let result = cursor.compare(endKey, with: dataKey)
 
                     // If its the same as the end key, include it
-                    if result == .orderedSame {
+                    if cursor.query.isLte && result == .orderedSame {
                         return dataKey
 
                     // If the next key is above the endKey range
-                    } else if result == upperBound {
+                    // OR, if the query is not LTE but the key is equal to the end range
+                    } else if result == upperBound || (!cursor.query.isLte && result == .orderedSame) {
                         return nil
                     }
                 }

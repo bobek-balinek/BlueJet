@@ -136,4 +136,57 @@ class KeyValueSequenceTests: XCTestCase {
         XCTAssertEqual(keys.count, 3)
         XCTAssertTrue(assertEqual(keys, expected))
     }
+
+    // MARK: - Precise Range
+
+    func testLtRangeIteration() {
+        let query = Query(lt: "C", reversed: false, database: database)
+        let keys = KeyValueSequence(query: query).map { mapDataToString($0) }
+        let expected: [Entry] = [
+            (key: "A", value: "0"),
+            (key: "B", value: "1")
+        ]
+
+        XCTAssertEqual(keys.count, 2)
+        XCTAssertTrue(assertEqual(keys, expected))
+    }
+
+    func testLtReverseRangeIteration() {
+        let query = Query(lt: "A", reversed: true, database: database)
+        let keys = KeyValueSequence(query: query).map { mapDataToString($0) }
+        let expected: [Entry] = [
+            (key: "D", value: "3"),
+            (key: "C", value: "2"),
+            (key: "B", value: "1")
+        ]
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertTrue(assertEqual(keys, expected))
+    }
+
+    func testGtRangeIteration() {
+        let query = Query(gt: "A", reversed: false, database: database)
+        let keys = KeyValueSequence(query: query).map { mapDataToString($0) }
+        let expected: [Entry] = [
+            (key: "B", value: "1"),
+            (key: "C", value: "2"),
+            (key: "D", value: "3")
+        ]
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertTrue(assertEqual(keys, expected))
+    }
+
+    func testGtReverseRangeIteration() {
+        let query = Query(gt: "D", reversed: true, database: database)
+        let keys = KeyValueSequence(query: query).map { mapDataToString($0) }
+        let expected: [Entry] = [
+            (key: "C", value: "2"),
+            (key: "B", value: "1"),
+            (key: "A", value: "0")
+        ]
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertTrue(assertEqual(keys, expected))
+    }
 }

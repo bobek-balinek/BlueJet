@@ -7,9 +7,6 @@
 //
 
 import Foundation
-#if SWIFT_PACKAGE
-    import CLMDB
-#endif
 
 /// Key Sequence type
 public struct KeyValueSequence: Sequence {

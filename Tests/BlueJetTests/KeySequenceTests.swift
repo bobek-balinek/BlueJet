@@ -103,4 +103,42 @@ class KeySequenceTests: XCTestCase {
         XCTAssertEqual(keys.count, 3)
         XCTAssertEqual(keys, ["D", "C", "B"])
     }
+
+    // MARK: - Precise Range
+
+    func testLtRangeIteration() {
+        let query = Query(lt: "C", reversed: false, database: database)
+        let sequence = KeySequence(query: query)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 2)
+        XCTAssertEqual(keys, ["A", "B"])
+    }
+
+    func testLtReverseRangeIteration() {
+        let query = Query(lt: "A", reversed: true, database: database)
+        let sequence = KeySequence(query: query)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertEqual(keys, ["D", "C", "B"])
+    }
+
+    func testGtRangeIteration() {
+        let query = Query(gt: "A", reversed: false, database: database)
+        let sequence = KeySequence(query: query)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertEqual(keys, ["B", "C", "D"])
+    }
+
+    func testGtReverseRangeIteration() {
+        let query = Query(gt: "D", reversed: true, database: database)
+        let sequence = KeySequence(query: query)
+        let keys: [String] = sequence.map { String(data: $0, encoding: .utf8)! }
+
+        XCTAssertEqual(keys.count, 3)
+        XCTAssertEqual(keys, ["C", "B", "A"])
+    }
 }

@@ -36,7 +36,7 @@ public class Cursor {
 
         do {
             try setup(transaction)
-            _ = try get(query.startKey, operation)
+            _ = try get(query.start, operation)
         } catch {
             lastError = error
         }
@@ -57,7 +57,7 @@ public class Cursor {
     /// When start key is not specified it will go to the start/end of the database
     /// Otherwise the cursor will be set at the start key
     var operation: CursorOperation {
-        guard query.startKey == nil else {
+        guard query.start == nil else {
             return .set
         }
 

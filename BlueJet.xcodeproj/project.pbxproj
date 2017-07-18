@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3429A42D1F1E07D50028C077 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429A42C1F1E07D50028C077 /* Utility.swift */; };
+		3429A42E1F1E07D50028C077 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429A42C1F1E07D50028C077 /* Utility.swift */; };
+		3429A42F1F1E07D50028C077 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429A42C1F1E07D50028C077 /* Utility.swift */; };
+		3429A4301F1E07D50028C077 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3429A42C1F1E07D50028C077 /* Utility.swift */; };
 		34792B4B1F18121A00457DC4 /* BlueJet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34792B121F180D7800457DC4 /* BlueJet.framework */; };
 		34792B521F18128300457DC4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34792B511F18128300457DC4 /* Environment.swift */; };
 		34792B751F18137700457DC4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 34792B591F18137700457DC4 /* .gitignore */; };
@@ -131,6 +135,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3429A42C1F1E07D50028C077 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = Sources/Utility.swift; sourceTree = "<group>"; };
 		34792B121F180D7800457DC4 /* BlueJet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueJet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34792B201F180D8E00457DC4 /* BlueJet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueJet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34792B2D1F180DA800457DC4 /* BlueJet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueJet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +291,7 @@
 				3488B6A31F1A92090053DAAA /* Query.swift */,
 				34C5DA4A1F196FAE0086E28D /* Slice.swift */,
 				34C5D9F21F18D8880086E28D /* Transaction.swift */,
+				3429A42C1F1E07D50028C077 /* Utility.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				34792BA41F18137700457DC4 /* midl.c in Sources */,
 				3488B6AA1F1AACB80053DAAA /* KeySequence.swift in Sources */,
 				34C5D9F51F18ED460086E28D /* Database.swift in Sources */,
+				3429A42D1F1E07D50028C077 /* Utility.swift in Sources */,
 				34C5DA4B1F196FAE0086E28D /* Slice.swift in Sources */,
 				3488B6BF1F1D51CF0053DAAA /* KeyValueSequence.swift in Sources */,
 				3488B6B01F1BDDD40053DAAA /* KeyIterator.swift in Sources */,
@@ -710,6 +717,7 @@
 				3488B6C51F1D5ACC0053DAAA /* Query.swift in Sources */,
 				34792BA51F18137700457DC4 /* midl.c in Sources */,
 				3488B6B21F1BDDD40053DAAA /* KeyIterator.swift in Sources */,
+				3429A42F1F1E07D50028C077 /* Utility.swift in Sources */,
 				3488B6C81F1D5ACF0053DAAA /* KeyValueSequence.swift in Sources */,
 				34C5D9FD1F1950400086E28D /* Database.swift in Sources */,
 				34C5DA4D1F196FAE0086E28D /* Slice.swift in Sources */,
@@ -731,6 +739,7 @@
 				3488B6C61F1D5ACC0053DAAA /* Query.swift in Sources */,
 				34792BA61F18137700457DC4 /* midl.c in Sources */,
 				3488B6B31F1BDDD40053DAAA /* KeyIterator.swift in Sources */,
+				3429A4301F1E07D50028C077 /* Utility.swift in Sources */,
 				3488B6C71F1D5ACF0053DAAA /* KeyValueSequence.swift in Sources */,
 				34C5DA011F19504E0086E28D /* Database.swift in Sources */,
 				34C5DA4E1F196FAE0086E28D /* Slice.swift in Sources */,
@@ -764,6 +773,7 @@
 				3488B6C41F1D5ACB0053DAAA /* Query.swift in Sources */,
 				34C5DA271F1957230086E28D /* midl.c in Sources */,
 				3488B6B11F1BDDD40053DAAA /* KeyIterator.swift in Sources */,
+				3429A42E1F1E07D50028C077 /* Utility.swift in Sources */,
 				3488B6C91F1D5AD00053DAAA /* KeyValueSequence.swift in Sources */,
 				34C5DA201F1956EA0086E28D /* DBError.swift in Sources */,
 				34C5DA4C1F196FAE0086E28D /* Slice.swift in Sources */,
