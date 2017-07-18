@@ -1,4 +1,4 @@
-# BlueJet
+# BlueJet [![Build Status](https://travis-ci.org/bobek-balinek/BlueJet.svg?branch=master)](https://travis-ci.org/bobek-balinek/BlueJet)
 
 > Blue jet is a rare type of a lightning with a very blue colour with near-ultraviolet emission lines from neutral and ionized molecular nitrogen. It typically occurs in the lower levels of ionosphere at ~50km above the surface of the earth.
 
