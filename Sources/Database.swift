@@ -11,26 +11,6 @@ import Foundation
 import CLMDB
 #endif
 
-
-/// Convert bytes at given memory pointer to `MDB_val` structure
-///
-/// - Parameter buf: Pointer to the data
-/// - Returns: Instance of MDB_val with given size and bytes data
-internal func rawPointerToMdb(_ buf: UnsafeRawBufferPointer) -> MDB_val {
-    return MDB_val(
-        mv_size: buf.count,
-        mv_data: UnsafeMutableRawPointer(mutating: buf.baseAddress)
-    )
-}
-
-/// Return the in-memory pointer from given MDB_val
-///
-/// - Parameter mdb: MDB_val instance
-/// - Returns: Unsafe pointer
-internal func mdbToRawPointer(_ mdb: MDB_val) -> UnsafeRawBufferPointer {
-    return UnsafeRawBufferPointer(start: mdb.mv_data, count: mdb.mv_size)
-}
-
 /// Database
 public class Database {
 
@@ -78,7 +58,7 @@ public class Database {
 
         /// Just reserve space for data, don't copy it. Return a pointer to the reserved space.
         public static let reserve = PutFlags(rawValue: MDB_RESERVE)
-        
+
         /// Data is being appended, don't split full pages
         public static let append = PutFlags(rawValue: MDB_APPEND)
 
@@ -301,7 +281,55 @@ public class Database {
         }
     }
 
-    // MARK: Class methods
+    // MARK: - Iterators
+
+    /// Create a new key iterator for given params
+    ///
+    /// - Parameters:
+    ///   - start: Key to start the iteration with
+    ///   - end: Key to end the iteration at
+    ///   - reversed: Reverse order
+    /// - Returns: Instance of the `KeySequence`
+    func keyIterator(start: String? = nil, end: String? = nil, reversed: Bool = false) -> KeySequence {
+        let query = Query(start: start, end: end, reversed: reversed, database: self)
+        return KeySequence(query: query)
+    }
+
+    /// Create a new key+value iterator for given params
+    ///
+    /// - Parameters:
+    ///   - start: Key to start the iteration with
+    ///   - end: Key to end the iteration at
+    ///   - reversed: Reverse order
+    /// - Returns: Instance of the `KeyValueSequence`
+    func keyValueIterator(start: String? = nil, end: String? = nil, reversed: Bool = false) -> KeyValueSequence {
+        let query = Query(start: start, end: end, reversed: reversed, database: self)
+        return KeyValueSequence(query: query)
+    }
+
+    /// Get a range of keys and values.
+    /// Typically used with more precise queries
+    /// NOTE: LTE/GTE values is favoured over LT/GT if both pairs are given
+    ///
+    /// - Parameters:
+    ///   - gte: Greater-than or equal to the key
+    ///   - gt: Greater-than the key
+    ///   - lte: Lower-than or equal to the key
+    ///   - lt: Lower-than the key
+    ///   - reversed: Reverse order
+    /// - Returns: Instance of `KeyValueSequence`
+    func range(
+        gte: Slice? = nil,
+        gt: Slice? = nil,
+        lte: Slice? = nil,
+        lt: Slice? = nil,
+        reversed: Bool = false
+    ) -> KeyValueSequence {
+        let query = Query(gte: gte, gt: gte, lte: lte, lt: lte, reversed: reversed, database: self)
+        return KeyValueSequence(query: query)
+    }
+
+    // MARK: - Class methods
 
     /// Create a database within given environment
     ///

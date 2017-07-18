@@ -19,7 +19,7 @@ class DatabaseTests: XCTestCase {
         super.setUp()
 
         do {
-            environment = try Environment(path: Helpers.getPath())
+            environment = try Environment(path: Helpers.getPath(name))
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -28,7 +28,8 @@ class DatabaseTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
 
-        try? FileManager.default.removeItem(atPath: Helpers.getPath())
+        environment.close()
+        try? FileManager.default.removeItem(atPath: Helpers.getPath(name))
     }
 
     func testInitialiseDatabase() {
