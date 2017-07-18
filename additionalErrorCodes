@@ -1,0 +1,7 @@
+    case ENOENT:    /* 2, FILE_NOT_FOUND */
+    case EIO:       /* 5, ACCESS_DENIED */
+    case ENOMEM:    /* 12, INVALID_ACCESS */
+    case EACCES:    /* 13, INVALID_DATA */
+    case EBUSY:     /* 16, CURRENT_DIRECTORY */
+    case EINVAL:    /* 22, BAD_COMMAND */
+    case ENOSPC:    /* 28, OUT_OF_PAPER */
