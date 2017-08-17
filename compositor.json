@@ -1,0 +1,83 @@
+{
+  "name": "bobek-balinek/BlueJet",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "BlueJet",
+  "branch": "master",
+  "style": {
+    "name": "Swiss",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/SwissHeader",
+      "article": "article/SwissArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "heading": {
+      "fontWeight": 700,
+      "letterSpacing": "-0.01em"
+    },
+    "layout": {
+      "fluid": true
+    },
+    "colors": {
+      "text": "#000",
+      "background": "#fff",
+      "primary": "#05a",
+      "secondary": "#444",
+      "highlight": "#f30",
+      "border": "#ccc",
+      "muted": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/bobek-balinek/BlueJet",
+          "text": "GitHub"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "BlueJet",
+      "subhead": "BlueJet is a modern Swift/Cocoa wrapper around Lightning Memory-Mapped Database Manager (LMDB)",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "BlueJet: BlueJet is a modern Swift/Cocoa wrapper around Lightning Memory-Mapped Database Manager (LMDB)",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "bobek-balinek",
+          "repo": "BlueJet"
+        }
+      ]
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<blockquote>\n<p>Blue jet is a rare type of a lightning with a very blue colour with near-ultraviolet emission lines from neutral and ionized molecular nitrogen. It typically occurs in the lower levels of ionosphere at ~50km above the surface of the earth.</p>\n</blockquote>\n<h2>Synopsis</h2>\n<p>BlueJet is a modern Swift/Cocoa wrapper around Lightning Memory-Mapped Database Manager (LMDB). It fully utilises the multi-threaded access, transations and provides a simple enumeration interface for fetching subsets of the database. Key/Value pairs are using Swift&apos;s Encoder/Decoder protocol when dealing with the data.</p>\n<h3>Value Type-oriented</h3>\n<p>With many data persistence options available for both Cocoa (Touch) and Server-side Swift BlueJet aims to be the simplest and fast Value Type store without the complexity of confusing query language, sub-classing your data models or large set of dependencies. This framework is designed to take any Swift&apos;s value type such as String, Int, Float and Data but also provide set of protocols to allow for custom type-to-Data conversion.</p>\n<h3>Encoder/Decoder support</h3>\n<p>With the upcoming release of Swift 4, BlueJet will support <code>struct</code> encoder/decoder features making it even easier to store any data you use within your app.</p>\n<h2>What is LMDB?</h2>\n<p>LMDB is an incredibly fast key-value store written by Howard Chu for the OpenLDAP project. Given the nature of LDAP workloads the design of LMDB is read-optimised (but writes are super fast too!). This particular database allows for multiple databases within one environment which makes separating different data sets much easier to handle. It also allows for multiple processes to access a single database without locking it and supports transactions for making series of fail-safe reads/write routines. For more details on the design and implementation of LMDB go to <a href=\"https://symas.com/lightning-memory-mapped-database/\">the website</a>.</p>\n<h2>Installation</h2>\n<h3>Carthage</h3>\n<p>Add BlueJet to your Cartfile:</p>\n<pre><span class=\"hljs-attribute\">github</span> <span class=\"hljs-string\">&quot;bobek-balinek/BlueJet&quot;</span></pre><p>Then run:</p>\n<pre>carthage <span class=\"hljs-keyword\">update</span> --<span class=\"hljs-keyword\">use</span>-submodules</pre><h3>Swift Package Manager</h3>\n<p>Add BlueJet as a dependency in your <code>Package.swift</code> file and import it in your project:</p>\n<pre><span class=\"hljs-keyword\">import</span> PackageDescription\n\n<span class=\"hljs-keyword\">let</span> package = <span class=\"hljs-type\">Package</span>(\n    name: <span class=\"hljs-string\">&quot;YourGreatNewProject&quot;</span>,\n    dependencies: [\n        .<span class=\"hljs-type\">Package</span>(url: <span class=\"hljs-string\">&quot;https://github.com/bobek-balinek/BlueJet.git&quot;</span>, majorVersion: <span class=\"hljs-number\">0</span>, minor: <span class=\"hljs-number\">1</span>)\n    ]\n)</pre><h2>Basic Usage</h2>\n<h3>Data (De)Serialisation</h3>\n<h3>Getting data</h3>\n<h3>Storing data</h3>\n<h3>Enumeration</h3>\n<h3>Storage protocol</h3>\n<h2>Documentation</h2>\n<p><strong>TODO</strong></p>\n<h2>Contributing</h2>\n<p>See <a href=\"CONTRIBUTING.md\">CONTRIBUTING.md</a> for more details!</p>\n<p>This project adheres to the <a href=\"https://github.com/bobek-balinek/BlueJet/blob/master/CODE_OF_CONDUCT.md\">Code of Conduct</a>.</p>\n<h2>License</h2>\n<p><code>BlueJet</code> is available under the MIT license. See the LICENSE files for more info.</p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/bobek-balinek/BlueJet",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/bobek-balinek",
+          "text": "bobek-balinek"
+        }
+      ]
+    }
+  ]
+}
