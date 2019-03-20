@@ -107,6 +107,14 @@ db.write { (trx: Transaction) in
 
 If you want to iterate over a range of keys you can create a `Range` or `ClosedRange` providing lower and upper bounds to restrict the query. These types conform to Swift's `Collection` type so you can iterate over them usign a `for` loop or the `forEach` method.
 
+```swift
+let range = db.range(from: "Bob", to: "Sally")
+
+for i in range.keys() {
+    print(i)
+}
+```
+
 ### Storable protocol
 
 It is possible to store custom types directly by conforming the type to `Storable` protocol. This protocol requires a function `primaryKey` to return a String representing the key it should be persisted under.
