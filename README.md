@@ -67,7 +67,18 @@ let package = Package(
 
 ## Basic Usage
 
-BlueJet is designed for Key/Value persistence. Keys and Values can be any of the Swift types i.e. `Int`, `String`, `Double` etc. Additionally, you can persist custom keys and values using the `Codable` protocol
+BlueJet is designed for Key/Value persistence. Keys and Values can be any of the Swift types i.e. `Int`, `String`, `Double` etc. Additionally, you can persist custom keys and values using the `Codable` protocol. First, you need to initialize the environment for interacting with a set of databases.
+
+```swift
+let env = Environment(url: localPath)
+let db = env.database(name: "Books")
+
+db.write { trx in
+    trx.put(value: "Astrophysics for People In A Hurry", forKey: "Favourite Book")
+}
+
+print(db.keys())
+```
 
 ### Retrieving data
 
@@ -114,7 +125,7 @@ extension Book: Storable {
 
 // …
 
-let book = Book(title: "Summary: Astrophysics for People In A Hurry", isbn: "978-1974241422")
+let book = Book(title: "Astrophysics for People In A Hurry", isbn: "978-1974241422")
 
 transaction.set(value: book)
 
