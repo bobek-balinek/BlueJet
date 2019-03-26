@@ -82,13 +82,9 @@ public class Cursor {
         let op: MDB_cursor_op = MDB_cursor_op(rawValue: operation.rawValue)
 
         do {
-            try validateGet(mdb_cursor_get(pointer, &keyValue, &value, op))
-
-            if value.mv_size == 0 {
-                return nil
-            }
-
-            guard let key = Data(data: mdbToRawPointer(keyValue)) else {
+            guard
+                try validateGet(mdb_cursor_get(pointer, &keyValue, &value, op)) == MDB_SUCCESS,
+                let key = Data(data: mdbToRawPointer(keyValue)) else {
                 return nil
             }
 
@@ -152,9 +148,15 @@ public class Cursor {
     ///
     /// - Parameter statusCode: Status code returned from invoking LMDB functions
     /// - throws: Operation error. See `DBError`.
-    internal func validateGet(_ statusCode: Int32) throws {
+    internal func validateGet(_ statusCode: Int32) throws -> Int32? {
         if statusCode != MDB_SUCCESS && statusCode != MDB_NOTFOUND {
             throw DBError(code: statusCode)
         }
+
+        if statusCode == MDB_NOTFOUND {
+            return nil
+        }
+
+        return statusCode
     }
 }
