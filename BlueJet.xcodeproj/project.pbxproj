@@ -118,10 +118,6 @@
 		34C5DA5F1F1A4F7E0086E28D /* BlueJet.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C5DA591F1A4F780086E28D /* BlueJet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34C5DA611F1A4F800086E28D /* BlueJet.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C5DA591F1A4F780086E28D /* BlueJet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34C5DA621F1A4F800086E28D /* BlueJet.h in Headers */ = {isa = PBXBuildFile; fileRef = 34C5DA591F1A4F780086E28D /* BlueJet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		34C5DA631F1A4F890086E28D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34C5DA5A1F1A4F780086E28D /* Info.plist */; };
-		34C5DA641F1A4F890086E28D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34C5DA5A1F1A4F780086E28D /* Info.plist */; };
-		34C5DA651F1A4F8A0086E28D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34C5DA5A1F1A4F780086E28D /* Info.plist */; };
-		34C5DA661F1A4F8A0086E28D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34C5DA5A1F1A4F780086E28D /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -570,10 +566,12 @@
 					};
 					34C5DA161F19562C0086E28D = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					34C5DA2B1F1957DA0086E28D = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					34C5DA3A1F1958F30086E28D = {
@@ -587,6 +585,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 34792B061F180D4500457DC4;
@@ -610,7 +609,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C5DA631F1A4F890086E28D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +617,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34792B7B1F18137700457DC4 /* Doxyfile in Resources */,
-				34C5DA651F1A4F8A0086E28D /* Info.plist in Resources */,
 				34792B931F18137700457DC4 /* mdb_dump.1 in Resources */,
 				34792BC01F18137700457DC4 /* sample-mdb.txt in Resources */,
 				34792B7E1F18137700457DC4 /* intro.doc in Resources */,
@@ -639,7 +636,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				34792B7C1F18137700457DC4 /* Doxyfile in Resources */,
-				34C5DA661F1A4F8A0086E28D /* Info.plist in Resources */,
 				34792B941F18137700457DC4 /* mdb_dump.1 in Resources */,
 				34792BC11F18137700457DC4 /* sample-mdb.txt in Resources */,
 				34792B7F1F18137700457DC4 /* intro.doc in Resources */,
@@ -665,7 +661,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C5DA641F1A4F890086E28D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +821,7 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -834,6 +830,7 @@
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -909,7 +906,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -981,7 +978,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -1053,7 +1050,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1116,7 +1113,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1192,7 +1189,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1259,7 +1256,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 				VALIDATE_PRODUCT = YES;
@@ -1327,7 +1324,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1383,7 +1380,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/vendor/lmdb";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1454,7 +1451,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1517,7 +1515,8 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1575,7 +1574,8 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1623,7 +1623,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1676,7 +1677,7 @@
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 			};
 			name = Debug;
@@ -1722,7 +1723,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.2;
 				VALIDATE_PRODUCT = YES;
 			};

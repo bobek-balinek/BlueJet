@@ -31,10 +31,10 @@ public protocol Slice {
 
 extension Slice {
     public func mdbValue() -> MDB_val {
-        let nsData = NSData(data: data())
+        let nsData: NSData = NSData(data: data())
         let rawPtr = UnsafeMutableRawPointer(mutating: nsData.bytes)
 
-        return MDB_val(mv_size: nsData.count, mv_data: rawPtr)
+        return MDB_val(mv_size: nsData.length, mv_data: rawPtr)
     }
 }
 
